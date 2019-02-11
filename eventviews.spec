@@ -5,22 +5,21 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : eventviews
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/eventviews-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/eventviews-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/eventviews-18.08.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/eventviews-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/eventviews-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/eventviews-18.12.2.tar.xz.sig
+Summary  : Library for creating events
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
-Requires: eventviews-lib
-Requires: eventviews-license
-Requires: eventviews-data
-Requires: eventviews-locales
+Requires: eventviews-data = %{version}-%{release}
+Requires: eventviews-lib = %{version}-%{release}
+Requires: eventviews-license = %{version}-%{release}
+Requires: eventviews-locales = %{version}-%{release}
 BuildRequires : akonadi-calendar-dev
 BuildRequires : akonadi-contacts-dev
 BuildRequires : akonadi-dev
-BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : calendarsupport-dev
@@ -33,7 +32,7 @@ BuildRequires : kidentitymanagement-dev
 BuildRequires : kmime-dev
 BuildRequires : kpimtextedit-dev
 BuildRequires : libkdepim-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 No detailed description available
@@ -49,9 +48,9 @@ data components for the eventviews package.
 %package dev
 Summary: dev components for the eventviews package.
 Group: Development
-Requires: eventviews-lib
-Requires: eventviews-data
-Provides: eventviews-devel
+Requires: eventviews-lib = %{version}-%{release}
+Requires: eventviews-data = %{version}-%{release}
+Provides: eventviews-devel = %{version}-%{release}
 
 %description dev
 dev components for the eventviews package.
@@ -60,8 +59,8 @@ dev components for the eventviews package.
 %package lib
 Summary: lib components for the eventviews package.
 Group: Libraries
-Requires: eventviews-data
-Requires: eventviews-license
+Requires: eventviews-data = %{version}-%{release}
+Requires: eventviews-license = %{version}-%{release}
 
 %description lib
 lib components for the eventviews package.
@@ -84,26 +83,26 @@ locales components for the eventviews package.
 
 
 %prep
-%setup -q -n eventviews-18.08.0
+%setup -q -n eventviews-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535425473
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549924909
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535425473
+export SOURCE_DATE_EPOCH=1549924909
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/eventviews
-cp COPYING %{buildroot}/usr/share/doc/eventviews/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/doc/eventviews/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/eventviews
+cp COPYING %{buildroot}/usr/share/package-licenses/eventviews/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/eventviews/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -166,12 +165,12 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5EventViews.so.5
-/usr/lib64/libKF5EventViews.so.5.9.0
+/usr/lib64/libKF5EventViews.so.5.10.2
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/eventviews/COPYING
-/usr/share/doc/eventviews/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/eventviews/COPYING
+/usr/share/package-licenses/eventviews/COPYING.LIB
 
 %files locales -f libeventviews.lang
 %defattr(-,root,root,-)
