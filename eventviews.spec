@@ -6,11 +6,11 @@
 #
 Name     : eventviews
 Version  : 19.08.1
-Release  : 10
+Release  : 11
 URL      : https://download.kde.org/stable/applications/19.08.1/src/eventviews-19.08.1.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.08.1/src/eventviews-19.08.1.tar.xz
 Source1 : https://download.kde.org/stable/applications/19.08.1/src/eventviews-19.08.1.tar.xz.sig
-Summary  : Library for creating events
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: eventviews-data = %{version}-%{release}
@@ -34,7 +34,7 @@ BuildRequires : kmime-dev
 BuildRequires : kpimtextedit-dev
 BuildRequires : libkdepim-dev
 BuildRequires : qtbase-dev mesa-dev
-BuildRequires : qttools-staticdev
+BuildRequires : qttools-dev
 
 %description
 No detailed description available
@@ -53,7 +53,6 @@ Group: Development
 Requires: eventviews-lib = %{version}-%{release}
 Requires: eventviews-data = %{version}-%{release}
 Provides: eventviews-devel = %{version}-%{release}
-Requires: eventviews = %{version}-%{release}
 Requires: eventviews = %{version}-%{release}
 
 %description dev
@@ -94,10 +93,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567790049
+export SOURCE_DATE_EPOCH=1569728132
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -107,11 +105,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567790049
+export SOURCE_DATE_EPOCH=1569728132
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/eventviews
 cp COPYING %{buildroot}/usr/share/package-licenses/eventviews/COPYING
