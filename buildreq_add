@@ -1,3 +1,17 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+akonadi-calendar-dev
+akonadi-contacts-dev
+akonadi-dev
+boost-dev
+calendarsupport-dev
+kcalendarcore-dev
+kcalutils-dev
+kcontacts-dev
+kdiagram-dev
+kholidays-dev
+kidentitymanagement-dev
+kmime-dev
+kpimtextedit-dev
+libkdepim-dev
 qttools-dev
