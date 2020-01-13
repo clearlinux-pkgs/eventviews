@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : eventviews
-Version  : 19.12.0
-Release  : 16
-URL      : https://download.kde.org/stable/release-service/19.12.0/src/eventviews-19.12.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.0/src/eventviews-19.12.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.0/src/eventviews-19.12.0.tar.xz.sig
+Version  : 19.12.1
+Release  : 17
+URL      : https://download.kde.org/stable/release-service/19.12.1/src/eventviews-19.12.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.1/src/eventviews-19.12.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.1/src/eventviews-19.12.1.tar.xz.sig
 Summary  : Library for creating events
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -86,15 +86,15 @@ locales components for the eventviews package.
 
 
 %prep
-%setup -q -n eventviews-19.12.0
-cd %{_builddir}/eventviews-19.12.0
+%setup -q -n eventviews-19.12.1
+cd %{_builddir}/eventviews-19.12.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576613641
+export SOURCE_DATE_EPOCH=1578955446
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -110,11 +110,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1576613641
+export SOURCE_DATE_EPOCH=1578955446
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/eventviews
-cp %{_builddir}/eventviews-19.12.0/COPYING %{buildroot}/usr/share/package-licenses/eventviews/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/eventviews-19.12.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/eventviews/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/eventviews-19.12.1/COPYING %{buildroot}/usr/share/package-licenses/eventviews/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/eventviews-19.12.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/eventviews/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -177,7 +177,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5EventViews.so.5
-/usr/lib64/libKF5EventViews.so.5.13.0
+/usr/lib64/libKF5EventViews.so.5.13.1
 
 %files license
 %defattr(0644,root,root,0755)
