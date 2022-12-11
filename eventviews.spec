@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : eventviews
-Version  : 22.08.3
-Release  : 49
-URL      : https://download.kde.org/stable/release-service/22.08.3/src/eventviews-22.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.3/src/eventviews-22.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.3/src/eventviews-22.08.3.tar.xz.sig
+Version  : 22.12.0
+Release  : 50
+URL      : https://download.kde.org/stable/release-service/22.12.0/src/eventviews-22.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.0/src/eventviews-22.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.0/src/eventviews-22.12.0.tar.xz.sig
 Summary  : Library for creating events
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0
@@ -94,15 +94,15 @@ locales components for the eventviews package.
 
 
 %prep
-%setup -q -n eventviews-22.08.3
-cd %{_builddir}/eventviews-22.08.3
+%setup -q -n eventviews-22.12.0
+cd %{_builddir}/eventviews-22.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667930944
+export SOURCE_DATE_EPOCH=1670787392
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -118,17 +118,18 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667930944
+export SOURCE_DATE_EPOCH=1670787392
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/eventviews
-cp %{_builddir}/eventviews-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
-cp %{_builddir}/eventviews-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/eventviews/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9 || :
-cp %{_builddir}/eventviews-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/eventviews/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
-cp %{_builddir}/eventviews-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/eventviews/8287b608d3fa40ef401339fd907ca1260c964123 || :
-cp %{_builddir}/eventviews-%{version}/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/eventviews/e712eadfab0d2357c0f50f599ef35ee0d87534cb || :
-cp %{_builddir}/eventviews-%{version}/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/eventviews/20079e8f79713dce80ab09774505773c926afa2a || :
-cp %{_builddir}/eventviews-%{version}/README.md.license %{buildroot}/usr/share/package-licenses/eventviews/cadc9e08cb956c041f87922de84b9206d9bbffb2 || :
-cp %{_builddir}/eventviews-%{version}/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
+cp %{_builddir}/eventviews-%{version}/.codespellrc.license %{buildroot}/usr/share/package-licenses/eventviews/c011fda7746c087a127999da1c4044854ee42238
+cp %{_builddir}/eventviews-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+cp %{_builddir}/eventviews-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/eventviews/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
+cp %{_builddir}/eventviews-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/eventviews/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/eventviews-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/eventviews/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/eventviews-%{version}/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/eventviews/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/eventviews-%{version}/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/eventviews/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/eventviews-%{version}/README.md.license %{buildroot}/usr/share/package-licenses/eventviews/cadc9e08cb956c041f87922de84b9206d9bbffb2
+cp %{_builddir}/eventviews-%{version}/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 pushd clr-build
 %make_install
 popd
@@ -139,7 +140,6 @@ popd
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/kservicetypes5/calendardecoration.desktop
 /usr/share/qlogging-categories5/eventviews.categories
 /usr/share/qlogging-categories5/eventviews.renamecategories
 
@@ -193,7 +193,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5EventViews.so.5
-/usr/lib64/libKF5EventViews.so.5.21.3
+/usr/lib64/libKF5EventViews.so.5.22.0
 
 %files license
 %defattr(0644,root,root,0755)
@@ -201,6 +201,7 @@ popd
 /usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 /usr/share/package-licenses/eventviews/8287b608d3fa40ef401339fd907ca1260c964123
 /usr/share/package-licenses/eventviews/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/eventviews/c011fda7746c087a127999da1c4044854ee42238
 /usr/share/package-licenses/eventviews/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
 /usr/share/package-licenses/eventviews/cadc9e08cb956c041f87922de84b9206d9bbffb2
 /usr/share/package-licenses/eventviews/e712eadfab0d2357c0f50f599ef35ee0d87534cb
