@@ -7,13 +7,17 @@
 #
 Name     : eventviews
 Version  : 23.04.0
-Release  : 57
+Release  : 58
 URL      : https://download.kde.org/stable/release-service/23.04.0/src/eventviews-23.04.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.0/src/eventviews-23.04.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.0/src/eventviews-23.04.0.tar.xz.sig
 Summary  : Library for creating events
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0
+Requires: eventviews-data = %{version}-%{release}
+Requires: eventviews-lib = %{version}-%{release}
+Requires: eventviews-license = %{version}-%{release}
+Requires: eventviews-locales = %{version}-%{release}
 BuildRequires : akonadi-calendar-dev
 BuildRequires : akonadi-contacts-dev
 BuildRequires : akonadi-dev
@@ -39,6 +43,52 @@ BuildRequires : qttools-dev
 %description
 SPDX-License-Identifier: CC0-1.0
 
+%package data
+Summary: data components for the eventviews package.
+Group: Data
+
+%description data
+data components for the eventviews package.
+
+
+%package dev
+Summary: dev components for the eventviews package.
+Group: Development
+Requires: eventviews-lib = %{version}-%{release}
+Requires: eventviews-data = %{version}-%{release}
+Provides: eventviews-devel = %{version}-%{release}
+Requires: eventviews = %{version}-%{release}
+
+%description dev
+dev components for the eventviews package.
+
+
+%package lib
+Summary: lib components for the eventviews package.
+Group: Libraries
+Requires: eventviews-data = %{version}-%{release}
+Requires: eventviews-license = %{version}-%{release}
+
+%description lib
+lib components for the eventviews package.
+
+
+%package license
+Summary: license components for the eventviews package.
+Group: Default
+
+%description license
+license components for the eventviews package.
+
+
+%package locales
+Summary: locales components for the eventviews package.
+Group: Default
+
+%description locales
+locales components for the eventviews package.
+
+
 %prep
 %setup -q -n eventviews-23.04.0
 cd %{_builddir}/eventviews-23.04.0
@@ -48,7 +98,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682038349
+export SOURCE_DATE_EPOCH=1682117501
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -64,7 +114,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682038349
+export SOURCE_DATE_EPOCH=1682117501
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/eventviews
 cp %{_builddir}/eventviews-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -77,6 +127,81 @@ cp %{_builddir}/eventviews-%{version}/metainfo.yaml.license %{buildroot}/usr/sha
 pushd clr-build
 %make_install
 popd
+%find_lang libeventviews
 
 %files
 %defattr(-,root,root,-)
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/qlogging-categories5/eventviews.categories
+/usr/share/qlogging-categories5/eventviews.renamecategories
+
+%files dev
+%defattr(-,root,root,-)
+/usr/include/KPim5/EventViews/EventViews/AgendaView
+/usr/include/KPim5/EventViews/EventViews/CalendarDecoration
+/usr/include/KPim5/EventViews/EventViews/ConfigDialogInterface
+/usr/include/KPim5/EventViews/EventViews/EventView
+/usr/include/KPim5/EventViews/EventViews/Helper
+/usr/include/KPim5/EventViews/EventViews/JournalView
+/usr/include/KPim5/EventViews/EventViews/ListView
+/usr/include/KPim5/EventViews/EventViews/MonthView
+/usr/include/KPim5/EventViews/EventViews/MultiAgendaView
+/usr/include/KPim5/EventViews/EventViews/Prefs
+/usr/include/KPim5/EventViews/EventViews/TimeLineView
+/usr/include/KPim5/EventViews/EventViews/TodoModel
+/usr/include/KPim5/EventViews/EventViews/TodoView
+/usr/include/KPim5/EventViews/EventViews/ViewCalendar
+/usr/include/KPim5/EventViews/EventViews/WhatsNextView
+/usr/include/KPim5/EventViews/EventViews/eventview.h
+/usr/include/KPim5/EventViews/EventViews/helper.h
+/usr/include/KPim5/EventViews/EventViews/prefs.h
+/usr/include/KPim5/EventViews/eventviews/EventView
+/usr/include/KPim5/EventViews/eventviews/Helper
+/usr/include/KPim5/EventViews/eventviews/Prefs
+/usr/include/KPim5/EventViews/eventviews/agendaview.h
+/usr/include/KPim5/EventViews/eventviews/calendardecoration.h
+/usr/include/KPim5/EventViews/eventviews/configdialoginterface.h
+/usr/include/KPim5/EventViews/eventviews/eventview.h
+/usr/include/KPim5/EventViews/eventviews/eventviews_export.h
+/usr/include/KPim5/EventViews/eventviews/helper.h
+/usr/include/KPim5/EventViews/eventviews/journalview.h
+/usr/include/KPim5/EventViews/eventviews/listview.h
+/usr/include/KPim5/EventViews/eventviews/monthview.h
+/usr/include/KPim5/EventViews/eventviews/multiagendaview.h
+/usr/include/KPim5/EventViews/eventviews/prefs.h
+/usr/include/KPim5/EventViews/eventviews/timelineview.h
+/usr/include/KPim5/EventViews/eventviews/todomodel.h
+/usr/include/KPim5/EventViews/eventviews/todoview.h
+/usr/include/KPim5/EventViews/eventviews/viewcalendar.h
+/usr/include/KPim5/EventViews/eventviews/whatsnextview.h
+/usr/include/KPim5/EventViews/eventviews_version.h
+/usr/lib64/cmake/KF5EventViews/KF5EventViewsConfig.cmake
+/usr/lib64/cmake/KF5EventViews/KF5EventViewsConfigVersion.cmake
+/usr/lib64/cmake/KF5EventViews/KPim5EventViewsTargets-relwithdebinfo.cmake
+/usr/lib64/cmake/KF5EventViews/KPim5EventViewsTargets.cmake
+/usr/lib64/cmake/KPim5EventViews/KPim5EventViewsConfig.cmake
+/usr/lib64/cmake/KPim5EventViews/KPim5EventViewsConfigVersion.cmake
+/usr/lib64/cmake/KPim5EventViews/KPim5EventViewsTargets-relwithdebinfo.cmake
+/usr/lib64/cmake/KPim5EventViews/KPim5EventViewsTargets.cmake
+/usr/lib64/libKPim5EventViews.so
+/usr/lib64/qt5/mkspecs/modules/qt_EventViews.pri
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/libKPim5EventViews.so.5
+/usr/lib64/libKPim5EventViews.so.5.23.0
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/eventviews/20079e8f79713dce80ab09774505773c926afa2a
+/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+/usr/share/package-licenses/eventviews/8287b608d3fa40ef401339fd907ca1260c964123
+/usr/share/package-licenses/eventviews/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/eventviews/cadc9e08cb956c041f87922de84b9206d9bbffb2
+/usr/share/package-licenses/eventviews/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+
+%files locales -f libeventviews.lang
+%defattr(-,root,root,-)
+
