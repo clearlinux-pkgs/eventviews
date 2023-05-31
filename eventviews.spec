@@ -7,7 +7,7 @@
 #
 Name     : eventviews
 Version  : 23.04.1
-Release  : 60
+Release  : 61
 URL      : https://download.kde.org/stable/release-service/23.04.1/src/eventviews-23.04.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.1/src/eventviews-23.04.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.1/src/eventviews-23.04.1.tar.xz.sig
@@ -98,7 +98,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684876314
+export SOURCE_DATE_EPOCH=1685499961
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -131,7 +131,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684876314
+export SOURCE_DATE_EPOCH=1685499961
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/eventviews
 cp %{_builddir}/eventviews-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -160,7 +160,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim5EventViews.so
 /usr/include/KPim5/EventViews/EventViews/AgendaView
 /usr/include/KPim5/EventViews/EventViews/CalendarDecoration
 /usr/include/KPim5/EventViews/EventViews/ConfigDialogInterface
@@ -212,7 +211,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim5EventViews.so.5
 /V3/usr/lib64/libKPim5EventViews.so.5.23.1
 /usr/lib64/libKPim5EventViews.so.5
 /usr/lib64/libKPim5EventViews.so.5.23.1
