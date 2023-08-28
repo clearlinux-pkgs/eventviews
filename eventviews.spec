@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : eventviews
-Version  : 23.04.3
-Release  : 67
-URL      : https://download.kde.org/stable/release-service/23.04.3/src/eventviews-23.04.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.3/src/eventviews-23.04.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.3/src/eventviews-23.04.3.tar.xz.sig
+Version  : 23.08.0
+Release  : 68
+URL      : https://download.kde.org/stable/release-service/23.08.0/src/eventviews-23.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.0/src/eventviews-23.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.0/src/eventviews-23.08.0.tar.xz.sig
 Summary  : Library for creating events
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0
@@ -90,15 +90,15 @@ locales components for the eventviews package.
 
 
 %prep
-%setup -q -n eventviews-23.04.3
-cd %{_builddir}/eventviews-23.04.3
+%setup -q -n eventviews-23.08.0
+cd %{_builddir}/eventviews-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689007230
+export SOURCE_DATE_EPOCH=1693243702
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -131,7 +131,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1689007230
+export SOURCE_DATE_EPOCH=1693243702
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/eventviews
 cp %{_builddir}/eventviews-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -171,7 +171,6 @@ popd
 /usr/include/KPim5/EventViews/EventViews/MultiAgendaView
 /usr/include/KPim5/EventViews/EventViews/Prefs
 /usr/include/KPim5/EventViews/EventViews/TimeLineView
-/usr/include/KPim5/EventViews/EventViews/TodoModel
 /usr/include/KPim5/EventViews/EventViews/TodoView
 /usr/include/KPim5/EventViews/EventViews/ViewCalendar
 /usr/include/KPim5/EventViews/EventViews/WhatsNextView
@@ -193,15 +192,10 @@ popd
 /usr/include/KPim5/EventViews/eventviews/multiagendaview.h
 /usr/include/KPim5/EventViews/eventviews/prefs.h
 /usr/include/KPim5/EventViews/eventviews/timelineview.h
-/usr/include/KPim5/EventViews/eventviews/todomodel.h
 /usr/include/KPim5/EventViews/eventviews/todoview.h
 /usr/include/KPim5/EventViews/eventviews/viewcalendar.h
 /usr/include/KPim5/EventViews/eventviews/whatsnextview.h
 /usr/include/KPim5/EventViews/eventviews_version.h
-/usr/lib64/cmake/KF5EventViews/KF5EventViewsConfig.cmake
-/usr/lib64/cmake/KF5EventViews/KF5EventViewsConfigVersion.cmake
-/usr/lib64/cmake/KF5EventViews/KPim5EventViewsTargets-relwithdebinfo.cmake
-/usr/lib64/cmake/KF5EventViews/KPim5EventViewsTargets.cmake
 /usr/lib64/cmake/KPim5EventViews/KPim5EventViewsConfig.cmake
 /usr/lib64/cmake/KPim5EventViews/KPim5EventViewsConfigVersion.cmake
 /usr/lib64/cmake/KPim5EventViews/KPim5EventViewsTargets-relwithdebinfo.cmake
@@ -211,9 +205,9 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim5EventViews.so.5.23.3
+/V3/usr/lib64/libKPim5EventViews.so.5.24.0
 /usr/lib64/libKPim5EventViews.so.5
-/usr/lib64/libKPim5EventViews.so.5.23.3
+/usr/lib64/libKPim5EventViews.so.5.24.0
 
 %files license
 %defattr(0644,root,root,0755)
