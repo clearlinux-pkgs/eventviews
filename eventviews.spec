@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : eventviews
-Version  : 24.02.2
-Release  : 87
-URL      : https://download.kde.org/stable/release-service/24.02.2/src/eventviews-24.02.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/24.02.2/src/eventviews-24.02.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/24.02.2/src/eventviews-24.02.2.tar.xz.sig
+Version  : 24.05.0
+Release  : 88
+URL      : https://download.kde.org/stable/release-service/24.05.0/src/eventviews-24.05.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/24.05.0/src/eventviews-24.05.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/24.05.0/src/eventviews-24.05.0.tar.xz.sig
 Source2  : BB463350D6EF31EF.pkey
 Summary  : Library for creating events
 Group    : Development/Tools
@@ -46,7 +46,7 @@ BuildRequires : qttools-dev
 %define debug_package %{nil}
 
 %description
-SPDX-License-Identifier: CC0-1.0
+No detailed description available
 
 %package data
 Summary: data components for the eventviews package.
@@ -100,15 +100,15 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) BB463350D6EF31EF' gpg.status
-%setup -q -n eventviews-24.02.2
-cd %{_builddir}/eventviews-24.02.2
+%setup -q -n eventviews-24.05.0
+cd %{_builddir}/eventviews-24.05.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1713285189
+export SOURCE_DATE_EPOCH=1716778651
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -169,7 +169,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1713285189
+export SOURCE_DATE_EPOCH=1716778651
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/eventviews
 cp %{_builddir}/eventviews-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -177,7 +177,6 @@ cp %{_builddir}/eventviews-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr
 cp %{_builddir}/eventviews-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/eventviews/8287b608d3fa40ef401339fd907ca1260c964123 || :
 cp %{_builddir}/eventviews-%{version}/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/eventviews/e712eadfab0d2357c0f50f599ef35ee0d87534cb || :
 cp %{_builddir}/eventviews-%{version}/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/eventviews/20079e8f79713dce80ab09774505773c926afa2a || :
-cp %{_builddir}/eventviews-%{version}/README.md.license %{buildroot}/usr/share/package-licenses/eventviews/cadc9e08cb956c041f87922de84b9206d9bbffb2 || :
 cp %{_builddir}/eventviews-%{version}/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
 export GOAMD64=v2
 GOAMD64=v3
@@ -245,9 +244,9 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim6EventViews.so.6.0.2
+/V3/usr/lib64/libKPim6EventViews.so.6.1.0
 /usr/lib64/libKPim6EventViews.so.6
-/usr/lib64/libKPim6EventViews.so.6.0.2
+/usr/lib64/libKPim6EventViews.so.6.1.0
 
 %files license
 %defattr(0644,root,root,0755)
@@ -255,7 +254,6 @@ popd
 /usr/share/package-licenses/eventviews/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 /usr/share/package-licenses/eventviews/8287b608d3fa40ef401339fd907ca1260c964123
 /usr/share/package-licenses/eventviews/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-/usr/share/package-licenses/eventviews/cadc9e08cb956c041f87922de84b9206d9bbffb2
 /usr/share/package-licenses/eventviews/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
 %files locales -f libeventviews6.lang
