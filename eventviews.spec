@@ -9,7 +9,7 @@
 #
 Name     : eventviews
 Version  : 24.12.3
-Release  : 114
+Release  : 115
 URL      : https://download.kde.org/stable/release-service/24.12.3/src/eventviews-24.12.3.tar.xz
 Source0  : https://download.kde.org/stable/release-service/24.12.3/src/eventviews-24.12.3.tar.xz
 Source1  : https://download.kde.org/stable/release-service/24.12.3/src/eventviews-24.12.3.tar.xz.sig
